@@ -22,7 +22,7 @@ class MockRouteInformationParser extends Mock implements RouteInformationParser<
 class MockAppRouter extends Mock implements AppRouter {
   // Mock config() since FinancialAnalyticsApp uses it
   @override
-  RouterConfig<UrlState> config({
+    RouterConfig<UrlState> config({
     DeepLinkBuilder? deepLinkBuilder,
     String? navRestorationScopeId,
     WidgetBuilder? placeholder,
@@ -32,6 +32,7 @@ class MockAppRouter extends Mock implements AppRouter {
     bool rebuildStackOnDeepLink = false,
     Listenable? reevaluateListenable,
     String? initialDeepLink,
+    List<PageRouteInfo>? initialRoutes,
   }) {
     return RouterConfig(
       routerDelegate: MockRouterDelegate(), 
