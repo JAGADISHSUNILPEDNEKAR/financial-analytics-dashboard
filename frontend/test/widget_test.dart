@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -15,19 +16,25 @@ import 'package:financial_analytics/presentation/widgets/real_time_chart.dart';
 
 // Mocks
 class MockAuthService extends Mock implements AuthService {}
+class MockRouterDelegate extends Mock implements RouterDelegate<UrlState> {}
+class MockRouteInformationParser extends Mock implements RouteInformationParser<UrlState> {}
+
 class MockAppRouter extends Mock implements AppRouter {
   // Mock config() since FinancialAnalyticsApp uses it
   @override
   RouterConfig<UrlState> config({
     DeepLinkBuilder? deepLinkBuilder,
-    NavPlaceholderBuilder? placeholder,
-    List<NavigatorObserver>? navigatorObservers,
-    bool? includePrefixMatches,
-    bool? reevaluateListenable,
+    String? navRestorationScopeId,
+    WidgetBuilder? placeholder,
+    NavigatorObserversBuilder navigatorObservers = AutoRouterDelegate.defaultNavigatorObserversBuilder,
+    bool includePrefixMatches = !kIsWeb,
+    bool Function(String? location)? neglectWhen,
+    bool rebuildStackOnDeepLink = false,
+    Listenable? reevaluateListenable,
   }) {
     return RouterConfig(
-      routerDelegate: RouterDelegate(), // Simplified mock
-      routeInformationParser: RouteInformationParser(), // Simplified mock
+      routerDelegate: MockRouterDelegate(), 
+      routeInformationParser: MockRouteInformationParser(),
     );
   }
 }

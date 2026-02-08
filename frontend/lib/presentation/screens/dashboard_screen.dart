@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:financial_analytics/presentation/blocs/dashboard/dashboard_bloc.dart';
 import 'package:financial_analytics/presentation/widgets/dashboard_widget.dart';
 import 'package:financial_analytics/presentation/widgets/loading_indicator.dart';
 import 'package:financial_analytics/presentation/widgets/error_widget.dart';
 
+@RoutePage()
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
 
