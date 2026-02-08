@@ -31,6 +31,7 @@ class MockAppRouter extends Mock implements AppRouter {
     bool Function(String? location)? neglectWhen,
     bool rebuildStackOnDeepLink = false,
     Listenable? reevaluateListenable,
+    String? initialDeepLink,
   }) {
     return RouterConfig(
       routerDelegate: MockRouterDelegate(), 
