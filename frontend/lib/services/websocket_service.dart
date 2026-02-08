@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:financial_analytics/core/constants/api_constants.dart';
 import 'package:financial_analytics/services/auth_service.dart';
+import 'package:get_it/get_it.dart';
 
 class WebSocketService {
   static final WebSocketService _instance = WebSocketService._internal();
@@ -24,7 +25,7 @@ class WebSocketService {
     if (_channel != null) return;
     
     try {
-      final token = await AuthService().getAccessToken();
+      final token = await GetIt.instance<AuthService>().getAccessToken();
       if (token == null) throw Exception('No auth token available');
       
       final wsUrl = Uri.parse('${ApiConstants.wsBaseUrl}/ws?token=$token');
