@@ -79,40 +79,39 @@ class _$DashboardModelCopyWithImpl<$Res, $Val extends DashboardModel>
   }) {
     return _then(
       _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            userId: null == userId
-                ? _value.userId
-                : userId // ignore: cast_nullable_to_non_nullable
-                      as String,
-            name: null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                      as String,
-            layout: null == layout
-                ? _value.layout
-                : layout // ignore: cast_nullable_to_non_nullable
-                      as Map<String, dynamic>,
-            widgets: null == widgets
-                ? _value.widgets
-                : widgets // ignore: cast_nullable_to_non_nullable
-                      as List<WidgetModel>,
-            isPublic: null == isPublic
-                ? _value.isPublic
-                : isPublic // ignore: cast_nullable_to_non_nullable
-                      as bool,
-            createdAt: null == createdAt
-                ? _value.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-            updatedAt: null == updatedAt
-                ? _value.updatedAt
-                : updatedAt // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-          )
-          as $Val,
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                as String,
+        userId: null == userId
+            ? _value.userId
+            : userId // ignore: cast_nullable_to_non_nullable
+                as String,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                as String,
+        layout: null == layout
+            ? _value.layout
+            : layout // ignore: cast_nullable_to_non_nullable
+                as Map<String, dynamic>,
+        widgets: null == widgets
+            ? _value.widgets
+            : widgets // ignore: cast_nullable_to_non_nullable
+                as List<WidgetModel>,
+        isPublic: null == isPublic
+            ? _value.isPublic
+            : isPublic // ignore: cast_nullable_to_non_nullable
+                as bool,
+        createdAt: null == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                as DateTime,
+        updatedAt: null == updatedAt
+            ? _value.updatedAt
+            : updatedAt // ignore: cast_nullable_to_non_nullable
+                as DateTime,
+      ) as $Val,
     );
   }
 }
@@ -164,35 +163,35 @@ class __$$DashboardModelImplCopyWithImpl<$Res>
         id: null == id
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         userId: null == userId
             ? _value.userId
             : userId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         name: null == name
             ? _value.name
             : name // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         layout: null == layout
             ? _value._layout
             : layout // ignore: cast_nullable_to_non_nullable
-                  as Map<String, dynamic>,
+                as Map<String, dynamic>,
         widgets: null == widgets
             ? _value._widgets
             : widgets // ignore: cast_nullable_to_non_nullable
-                  as List<WidgetModel>,
+                as List<WidgetModel>,
         isPublic: null == isPublic
             ? _value.isPublic
             : isPublic // ignore: cast_nullable_to_non_nullable
-                  as bool,
+                as bool,
         createdAt: null == createdAt
             ? _value.createdAt
             : createdAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
+                as DateTime,
         updatedAt: null == updatedAt
             ? _value.updatedAt
             : updatedAt // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
+                as DateTime,
       ),
     );
   }
@@ -210,9 +209,9 @@ class _$DashboardModelImpl extends _DashboardModel {
     required this.isPublic,
     required this.createdAt,
     required this.updatedAt,
-  }) : _layout = layout,
-       _widgets = widgets,
-       super._();
+  })  : _layout = layout,
+        _widgets = widgets,
+        super._();
 
   factory _$DashboardModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DashboardModelImplFromJson(json);
@@ -272,16 +271,16 @@ class _$DashboardModelImpl extends _DashboardModel {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    userId,
-    name,
-    const DeepCollectionEquality().hash(_layout),
-    const DeepCollectionEquality().hash(_widgets),
-    isPublic,
-    createdAt,
-    updatedAt,
-  );
+        runtimeType,
+        id,
+        userId,
+        name,
+        const DeepCollectionEquality().hash(_layout),
+        const DeepCollectionEquality().hash(_widgets),
+        isPublic,
+        createdAt,
+        updatedAt,
+      );
 
   @JsonKey(ignore: true)
   @override
@@ -388,24 +387,23 @@ class _$WidgetModelCopyWithImpl<$Res, $Val extends WidgetModel>
   }) {
     return _then(
       _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as String,
-            type: null == type
-                ? _value.type
-                : type // ignore: cast_nullable_to_non_nullable
-                      as String,
-            config: null == config
-                ? _value.config
-                : config // ignore: cast_nullable_to_non_nullable
-                      as Map<String, dynamic>,
-            position: null == position
-                ? _value.position
-                : position // ignore: cast_nullable_to_non_nullable
-                      as Map<String, dynamic>,
-          )
-          as $Val,
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                as String,
+        type: null == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                as String,
+        config: null == config
+            ? _value.config
+            : config // ignore: cast_nullable_to_non_nullable
+                as Map<String, dynamic>,
+        position: null == position
+            ? _value.position
+            : position // ignore: cast_nullable_to_non_nullable
+                as Map<String, dynamic>,
+      ) as $Val,
     );
   }
 }
@@ -449,19 +447,19 @@ class __$$WidgetModelImplCopyWithImpl<$Res>
         id: null == id
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         type: null == type
             ? _value.type
             : type // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
         config: null == config
             ? _value._config
             : config // ignore: cast_nullable_to_non_nullable
-                  as Map<String, dynamic>,
+                as Map<String, dynamic>,
         position: null == position
             ? _value._position
             : position // ignore: cast_nullable_to_non_nullable
-                  as Map<String, dynamic>,
+                as Map<String, dynamic>,
       ),
     );
   }
@@ -475,9 +473,9 @@ class _$WidgetModelImpl extends _WidgetModel {
     required this.type,
     required final Map<String, dynamic> config,
     required final Map<String, dynamic> position,
-  }) : _config = config,
-       _position = position,
-       super._();
+  })  : _config = config,
+        _position = position,
+        super._();
 
   factory _$WidgetModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$WidgetModelImplFromJson(json);
@@ -521,12 +519,12 @@ class _$WidgetModelImpl extends _WidgetModel {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    id,
-    type,
-    const DeepCollectionEquality().hash(_config),
-    const DeepCollectionEquality().hash(_position),
-  );
+        runtimeType,
+        id,
+        type,
+        const DeepCollectionEquality().hash(_config),
+        const DeepCollectionEquality().hash(_position),
+      );
 
   @JsonKey(ignore: true)
   @override

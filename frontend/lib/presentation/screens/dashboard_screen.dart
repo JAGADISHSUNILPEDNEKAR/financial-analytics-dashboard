@@ -35,8 +35,8 @@ class DashboardScreen extends StatelessWidget {
             error: (message) => CustomErrorWidget(
               message: message,
               onRetry: () => context.read<DashboardBloc>().add(
-                const DashboardLoadRequested(),
-              ),
+                    const DashboardLoadRequested(),
+                  ),
             ),
           );
         },
@@ -83,8 +83,8 @@ class DashboardScreen extends StatelessWidget {
 
   void _removeWidget(BuildContext context, String widgetId) {
     context.read<DashboardBloc>().add(
-      DashboardWidgetRemoved(widgetId: widgetId),
-    );
+          DashboardWidgetRemoved(widgetId: widgetId),
+        );
   }
 
   void _configureWidget(BuildContext context, Widget widget) {

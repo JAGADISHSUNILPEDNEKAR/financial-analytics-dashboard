@@ -23,15 +23,15 @@ class DashboardModel with _$DashboardModel {
       _$DashboardModelFromJson(json);
 
   Dashboard toEntity() => Dashboard(
-    id: id,
-    userId: userId,
-    name: name,
-    layout: layout,
-    widgets: widgets.map((w) => w.toEntity()).toList(),
-    isPublic: isPublic,
-    createdAt: createdAt,
-    updatedAt: updatedAt,
-  );
+        id: id,
+        userId: userId,
+        name: name,
+        layout: layout,
+        widgets: widgets.map((w) => w.toEntity()).toList(),
+        isPublic: isPublic,
+        createdAt: createdAt,
+        updatedAt: updatedAt,
+      );
 }
 
 @freezed

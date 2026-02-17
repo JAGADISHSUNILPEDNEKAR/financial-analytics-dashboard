@@ -23,14 +23,16 @@ mixin _$DashboardState {
     required TResult Function() loading,
     required TResult Function(Dashboard dashboard) loaded,
     required TResult Function(String message) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(Dashboard dashboard)? loaded,
     TResult? Function(String message)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -38,21 +40,24 @@ mixin _$DashboardState {
     TResult Function(Dashboard dashboard)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
@@ -60,7 +65,8 @@ mixin _$DashboardState {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -341,7 +347,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
         null == dashboard
             ? _value.dashboard
             : dashboard // ignore: cast_nullable_to_non_nullable
-                  as Dashboard,
+                as Dashboard,
       ),
     );
   }
@@ -489,7 +495,7 @@ class __$$ErrorImplCopyWithImpl<$Res>
         null == message
             ? _value.message
             : message // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -615,34 +621,40 @@ mixin _$DashboardEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() loadRequested,
     required TResult Function(String widgetId) widgetRemoved,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadRequested,
     TResult? Function(String widgetId)? widgetRemoved,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadRequested,
     TResult Function(String widgetId)? widgetRemoved,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(DashboardLoadRequested value) loadRequested,
     required TResult Function(DashboardWidgetRemoved value) widgetRemoved,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(DashboardLoadRequested value)? loadRequested,
     TResult? Function(DashboardWidgetRemoved value)? widgetRemoved,
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(DashboardLoadRequested value)? loadRequested,
     TResult Function(DashboardWidgetRemoved value)? widgetRemoved,
     required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -796,7 +808,7 @@ class __$$DashboardWidgetRemovedImplCopyWithImpl<$Res>
         widgetId: null == widgetId
             ? _value.widgetId
             : widgetId // ignore: cast_nullable_to_non_nullable
-                  as String,
+                as String,
       ),
     );
   }
@@ -831,11 +843,11 @@ class _$DashboardWidgetRemovedImpl implements DashboardWidgetRemoved {
   @override
   @pragma('vm:prefer-inline')
   _$$DashboardWidgetRemovedImplCopyWith<_$DashboardWidgetRemovedImpl>
-  get copyWith =>
-      __$$DashboardWidgetRemovedImplCopyWithImpl<_$DashboardWidgetRemovedImpl>(
-        this,
-        _$identity,
-      );
+      get copyWith => __$$DashboardWidgetRemovedImplCopyWithImpl<
+              _$DashboardWidgetRemovedImpl>(
+            this,
+            _$identity,
+          );
 
   @override
   @optionalTypeArgs
@@ -907,5 +919,5 @@ abstract class DashboardWidgetRemoved implements DashboardEvent {
   String get widgetId;
   @JsonKey(ignore: true)
   _$$DashboardWidgetRemovedImplCopyWith<_$DashboardWidgetRemovedImpl>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }

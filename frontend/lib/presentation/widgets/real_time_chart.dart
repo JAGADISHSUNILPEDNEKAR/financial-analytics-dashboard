@@ -59,8 +59,7 @@ class _RealTimeChartState extends State<RealTimeChart> {
         barRods: [
           BarChartRodData(
             toY: volume,
-            color:
-                price >
+            color: price >
                     (_priceData.length > 1
                         ? _priceData[_priceData.length - 2].y
                         : price)
@@ -110,8 +109,8 @@ class _RealTimeChartState extends State<RealTimeChart> {
                   Text(
                     '\${_priceData.last.y.toStringAsFixed(2)}',
                     style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      color: _getPriceColor(),
-                    ),
+                          color: _getPriceColor(),
+                        ),
                   ),
               ],
             ),
