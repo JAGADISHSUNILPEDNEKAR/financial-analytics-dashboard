@@ -48,6 +48,6 @@ class WidgetModel with _$WidgetModel {
   factory WidgetModel.fromJson(Map<String, dynamic> json) =>
       _$WidgetModelFromJson(json);
 
-  Widget toEntity() =>
-      Widget(id: id, type: type, config: config, position: position);
+  DashboardWidget toEntity() =>
+      DashboardWidget(id: id, type: type, config: config, position: position);
 }

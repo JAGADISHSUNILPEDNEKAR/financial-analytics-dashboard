@@ -8,7 +8,6 @@ import 'package:financial_analytics/core/theme/app_theme.dart';
 import 'package:financial_analytics/core/router/app_router.dart';
 import 'package:financial_analytics/presentation/blocs/auth/auth_bloc.dart';
 import 'package:financial_analytics/presentation/blocs/connectivity/connectivity_bloc.dart';
-import 'package:financial_analytics/services/platform_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

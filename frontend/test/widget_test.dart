@@ -5,14 +5,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:get_it/get_it.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:financial_analytics/main.dart';
+
 import 'package:financial_analytics/services/auth_service.dart';
 import 'package:financial_analytics/presentation/blocs/auth/auth_bloc.dart';
 import 'package:financial_analytics/presentation/blocs/connectivity/connectivity_bloc.dart';
 import 'package:financial_analytics/presentation/screens/login_screen.dart';
-import 'package:financial_analytics/presentation/screens/dashboard_screen.dart';
+
 import 'package:financial_analytics/core/router/app_router.dart';
-import 'package:financial_analytics/presentation/widgets/real_time_chart.dart';
 
 // Mocks
 class MockAuthService extends Mock implements AuthService {}
