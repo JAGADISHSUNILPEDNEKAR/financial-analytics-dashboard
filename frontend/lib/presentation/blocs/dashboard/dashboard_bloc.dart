@@ -14,7 +14,8 @@ class DashboardState with _$DashboardState {
 @freezed
 class DashboardEvent with _$DashboardEvent {
   const factory DashboardEvent.loadRequested() = DashboardLoadRequested;
-  const factory DashboardEvent.widgetRemoved({required String widgetId}) = DashboardWidgetRemoved;
+  const factory DashboardEvent.widgetRemoved({required String widgetId}) =
+      DashboardWidgetRemoved;
 }
 
 class Dashboard {
@@ -25,9 +26,9 @@ class Dashboard {
 class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   DashboardBloc() : super(const DashboardState.initial()) {
     on<DashboardLoadRequested>((event, emit) async {
-       emit(const DashboardState.loading());
-       // Simulate load
-       emit(DashboardState.loaded(Dashboard()));
+      emit(const DashboardState.loading());
+      // Simulate load
+      emit(DashboardState.loaded(Dashboard()));
     });
   }
 }

@@ -12,7 +12,8 @@ part of 'dashboard_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 DashboardModel _$DashboardModelFromJson(Map<String, dynamic> json) {
   return _DashboardModel.fromJson(json);
@@ -38,18 +39,20 @@ mixin _$DashboardModel {
 /// @nodoc
 abstract class $DashboardModelCopyWith<$Res> {
   factory $DashboardModelCopyWith(
-          DashboardModel value, $Res Function(DashboardModel) then) =
-      _$DashboardModelCopyWithImpl<$Res, DashboardModel>;
+    DashboardModel value,
+    $Res Function(DashboardModel) then,
+  ) = _$DashboardModelCopyWithImpl<$Res, DashboardModel>;
   @useResult
-  $Res call(
-      {String id,
-      String userId,
-      String name,
-      Map<String, dynamic> layout,
-      List<WidgetModel> widgets,
-      bool isPublic,
-      DateTime createdAt,
-      DateTime updatedAt});
+  $Res call({
+    String id,
+    String userId,
+    String name,
+    Map<String, dynamic> layout,
+    List<WidgetModel> widgets,
+    bool isPublic,
+    DateTime createdAt,
+    DateTime updatedAt,
+  });
 }
 
 /// @nodoc
@@ -74,60 +77,65 @@ class _$DashboardModelCopyWithImpl<$Res, $Val extends DashboardModel>
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      layout: null == layout
-          ? _value.layout
-          : layout // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-      widgets: null == widgets
-          ? _value.widgets
-          : widgets // ignore: cast_nullable_to_non_nullable
-              as List<WidgetModel>,
-      isPublic: null == isPublic
-          ? _value.isPublic
-          : isPublic // ignore: cast_nullable_to_non_nullable
-              as bool,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as String,
+            userId: null == userId
+                ? _value.userId
+                : userId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            layout: null == layout
+                ? _value.layout
+                : layout // ignore: cast_nullable_to_non_nullable
+                      as Map<String, dynamic>,
+            widgets: null == widgets
+                ? _value.widgets
+                : widgets // ignore: cast_nullable_to_non_nullable
+                      as List<WidgetModel>,
+            isPublic: null == isPublic
+                ? _value.isPublic
+                : isPublic // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            createdAt: null == createdAt
+                ? _value.createdAt
+                : createdAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+            updatedAt: null == updatedAt
+                ? _value.updatedAt
+                : updatedAt // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$DashboardModelImplCopyWith<$Res>
     implements $DashboardModelCopyWith<$Res> {
-  factory _$$DashboardModelImplCopyWith(_$DashboardModelImpl value,
-          $Res Function(_$DashboardModelImpl) then) =
-      __$$DashboardModelImplCopyWithImpl<$Res>;
+  factory _$$DashboardModelImplCopyWith(
+    _$DashboardModelImpl value,
+    $Res Function(_$DashboardModelImpl) then,
+  ) = __$$DashboardModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String userId,
-      String name,
-      Map<String, dynamic> layout,
-      List<WidgetModel> widgets,
-      bool isPublic,
-      DateTime createdAt,
-      DateTime updatedAt});
+  $Res call({
+    String id,
+    String userId,
+    String name,
+    Map<String, dynamic> layout,
+    List<WidgetModel> widgets,
+    bool isPublic,
+    DateTime createdAt,
+    DateTime updatedAt,
+  });
 }
 
 /// @nodoc
@@ -135,8 +143,9 @@ class __$$DashboardModelImplCopyWithImpl<$Res>
     extends _$DashboardModelCopyWithImpl<$Res, _$DashboardModelImpl>
     implements _$$DashboardModelImplCopyWith<$Res> {
   __$$DashboardModelImplCopyWithImpl(
-      _$DashboardModelImpl _value, $Res Function(_$DashboardModelImpl) _then)
-      : super(_value, _then);
+    _$DashboardModelImpl _value,
+    $Res Function(_$DashboardModelImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -150,58 +159,60 @@ class __$$DashboardModelImplCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
-    return _then(_$DashboardModelImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      layout: null == layout
-          ? _value._layout
-          : layout // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-      widgets: null == widgets
-          ? _value._widgets
-          : widgets // ignore: cast_nullable_to_non_nullable
-              as List<WidgetModel>,
-      isPublic: null == isPublic
-          ? _value.isPublic
-          : isPublic // ignore: cast_nullable_to_non_nullable
-              as bool,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ));
+    return _then(
+      _$DashboardModelImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+        userId: null == userId
+            ? _value.userId
+            : userId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        layout: null == layout
+            ? _value._layout
+            : layout // ignore: cast_nullable_to_non_nullable
+                  as Map<String, dynamic>,
+        widgets: null == widgets
+            ? _value._widgets
+            : widgets // ignore: cast_nullable_to_non_nullable
+                  as List<WidgetModel>,
+        isPublic: null == isPublic
+            ? _value.isPublic
+            : isPublic // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        createdAt: null == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        updatedAt: null == updatedAt
+            ? _value.updatedAt
+            : updatedAt // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$DashboardModelImpl extends _DashboardModel {
-  const _$DashboardModelImpl(
-      {required this.id,
-      required this.userId,
-      required this.name,
-      required final Map<String, dynamic> layout,
-      required final List<WidgetModel> widgets,
-      required this.isPublic,
-      required this.createdAt,
-      required this.updatedAt})
-      : _layout = layout,
-        _widgets = widgets,
-        super._();
+  const _$DashboardModelImpl({
+    required this.id,
+    required this.userId,
+    required this.name,
+    required final Map<String, dynamic> layout,
+    required final List<WidgetModel> widgets,
+    required this.isPublic,
+    required this.createdAt,
+    required this.updatedAt,
+  }) : _layout = layout,
+       _widgets = widgets,
+       super._();
 
   factory _$DashboardModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DashboardModelImplFromJson(json);
@@ -261,41 +272,43 @@ class _$DashboardModelImpl extends _DashboardModel {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      userId,
-      name,
-      const DeepCollectionEquality().hash(_layout),
-      const DeepCollectionEquality().hash(_widgets),
-      isPublic,
-      createdAt,
-      updatedAt);
+    runtimeType,
+    id,
+    userId,
+    name,
+    const DeepCollectionEquality().hash(_layout),
+    const DeepCollectionEquality().hash(_widgets),
+    isPublic,
+    createdAt,
+    updatedAt,
+  );
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$DashboardModelImplCopyWith<_$DashboardModelImpl> get copyWith =>
       __$$DashboardModelImplCopyWithImpl<_$DashboardModelImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DashboardModelImplToJson(
-      this,
-    );
+    return _$$DashboardModelImplToJson(this);
   }
 }
 
 abstract class _DashboardModel extends DashboardModel {
-  const factory _DashboardModel(
-      {required final String id,
-      required final String userId,
-      required final String name,
-      required final Map<String, dynamic> layout,
-      required final List<WidgetModel> widgets,
-      required final bool isPublic,
-      required final DateTime createdAt,
-      required final DateTime updatedAt}) = _$DashboardModelImpl;
+  const factory _DashboardModel({
+    required final String id,
+    required final String userId,
+    required final String name,
+    required final Map<String, dynamic> layout,
+    required final List<WidgetModel> widgets,
+    required final bool isPublic,
+    required final DateTime createdAt,
+    required final DateTime updatedAt,
+  }) = _$DashboardModelImpl;
   const _DashboardModel._() : super._();
 
   factory _DashboardModel.fromJson(Map<String, dynamic> json) =
@@ -343,14 +356,16 @@ mixin _$WidgetModel {
 /// @nodoc
 abstract class $WidgetModelCopyWith<$Res> {
   factory $WidgetModelCopyWith(
-          WidgetModel value, $Res Function(WidgetModel) then) =
-      _$WidgetModelCopyWithImpl<$Res, WidgetModel>;
+    WidgetModel value,
+    $Res Function(WidgetModel) then,
+  ) = _$WidgetModelCopyWithImpl<$Res, WidgetModel>;
   @useResult
-  $Res call(
-      {String id,
-      String type,
-      Map<String, dynamic> config,
-      Map<String, dynamic> position});
+  $Res call({
+    String id,
+    String type,
+    Map<String, dynamic> config,
+    Map<String, dynamic> position,
+  });
 }
 
 /// @nodoc
@@ -371,24 +386,27 @@ class _$WidgetModelCopyWithImpl<$Res, $Val extends WidgetModel>
     Object? config = null,
     Object? position = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      config: null == config
-          ? _value.config
-          : config // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-      position: null == position
-          ? _value.position
-          : position // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as String,
+            type: null == type
+                ? _value.type
+                : type // ignore: cast_nullable_to_non_nullable
+                      as String,
+            config: null == config
+                ? _value.config
+                : config // ignore: cast_nullable_to_non_nullable
+                      as Map<String, dynamic>,
+            position: null == position
+                ? _value.position
+                : position // ignore: cast_nullable_to_non_nullable
+                      as Map<String, dynamic>,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -396,15 +414,17 @@ class _$WidgetModelCopyWithImpl<$Res, $Val extends WidgetModel>
 abstract class _$$WidgetModelImplCopyWith<$Res>
     implements $WidgetModelCopyWith<$Res> {
   factory _$$WidgetModelImplCopyWith(
-          _$WidgetModelImpl value, $Res Function(_$WidgetModelImpl) then) =
-      __$$WidgetModelImplCopyWithImpl<$Res>;
+    _$WidgetModelImpl value,
+    $Res Function(_$WidgetModelImpl) then,
+  ) = __$$WidgetModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String type,
-      Map<String, dynamic> config,
-      Map<String, dynamic> position});
+  $Res call({
+    String id,
+    String type,
+    Map<String, dynamic> config,
+    Map<String, dynamic> position,
+  });
 }
 
 /// @nodoc
@@ -412,8 +432,9 @@ class __$$WidgetModelImplCopyWithImpl<$Res>
     extends _$WidgetModelCopyWithImpl<$Res, _$WidgetModelImpl>
     implements _$$WidgetModelImplCopyWith<$Res> {
   __$$WidgetModelImplCopyWithImpl(
-      _$WidgetModelImpl _value, $Res Function(_$WidgetModelImpl) _then)
-      : super(_value, _then);
+    _$WidgetModelImpl _value,
+    $Res Function(_$WidgetModelImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -423,38 +444,40 @@ class __$$WidgetModelImplCopyWithImpl<$Res>
     Object? config = null,
     Object? position = null,
   }) {
-    return _then(_$WidgetModelImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      config: null == config
-          ? _value._config
-          : config // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-      position: null == position
-          ? _value._position
-          : position // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-    ));
+    return _then(
+      _$WidgetModelImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+        type: null == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as String,
+        config: null == config
+            ? _value._config
+            : config // ignore: cast_nullable_to_non_nullable
+                  as Map<String, dynamic>,
+        position: null == position
+            ? _value._position
+            : position // ignore: cast_nullable_to_non_nullable
+                  as Map<String, dynamic>,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$WidgetModelImpl extends _WidgetModel {
-  const _$WidgetModelImpl(
-      {required this.id,
-      required this.type,
-      required final Map<String, dynamic> config,
-      required final Map<String, dynamic> position})
-      : _config = config,
-        _position = position,
-        super._();
+  const _$WidgetModelImpl({
+    required this.id,
+    required this.type,
+    required final Map<String, dynamic> config,
+    required final Map<String, dynamic> position,
+  }) : _config = config,
+       _position = position,
+       super._();
 
   factory _$WidgetModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$WidgetModelImplFromJson(json);
@@ -498,11 +521,12 @@ class _$WidgetModelImpl extends _WidgetModel {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      type,
-      const DeepCollectionEquality().hash(_config),
-      const DeepCollectionEquality().hash(_position));
+    runtimeType,
+    id,
+    type,
+    const DeepCollectionEquality().hash(_config),
+    const DeepCollectionEquality().hash(_position),
+  );
 
   @JsonKey(ignore: true)
   @override
@@ -512,18 +536,17 @@ class _$WidgetModelImpl extends _WidgetModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$WidgetModelImplToJson(
-      this,
-    );
+    return _$$WidgetModelImplToJson(this);
   }
 }
 
 abstract class _WidgetModel extends WidgetModel {
-  const factory _WidgetModel(
-      {required final String id,
-      required final String type,
-      required final Map<String, dynamic> config,
-      required final Map<String, dynamic> position}) = _$WidgetModelImpl;
+  const factory _WidgetModel({
+    required final String id,
+    required final String type,
+    required final Map<String, dynamic> config,
+    required final Map<String, dynamic> position,
+  }) = _$WidgetModelImpl;
   const _WidgetModel._() : super._();
 
   factory _WidgetModel.fromJson(Map<String, dynamic> json) =

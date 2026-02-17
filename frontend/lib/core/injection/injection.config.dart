@@ -16,16 +16,12 @@ import '../../presentation/blocs/connectivity/connectivity_bloc.dart' as _i905;
 import '../../services/auth_service.dart' as _i610;
 
 extension GetItInjectableX on _i174.GetIt {
-// initializes the registration of main-scope dependencies inside of GetIt
+  // initializes the registration of main-scope dependencies inside of GetIt
   _i174.GetIt init({
     String? environment,
     _i526.EnvironmentFilter? environmentFilter,
   }) {
-    final gh = _i526.GetItHelper(
-      this,
-      environment,
-      environmentFilter,
-    );
+    final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.factory<_i905.ConnectivityBloc>(() => _i905.ConnectivityBloc());
     gh.lazySingleton<_i610.AuthService>(() => _i610.AuthServiceImpl());
     gh.factory<_i141.AuthBloc>(() => _i141.AuthBloc(gh<_i610.AuthService>()));

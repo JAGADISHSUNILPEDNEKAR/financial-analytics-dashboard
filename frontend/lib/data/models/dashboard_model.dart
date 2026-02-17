@@ -7,7 +7,7 @@ part 'dashboard_model.g.dart';
 @freezed
 class DashboardModel with _$DashboardModel {
   const DashboardModel._();
-  
+
   const factory DashboardModel({
     required String id,
     required String userId,
@@ -18,10 +18,10 @@ class DashboardModel with _$DashboardModel {
     required DateTime createdAt,
     required DateTime updatedAt,
   }) = _DashboardModel;
-  
+
   factory DashboardModel.fromJson(Map<String, dynamic> json) =>
       _$DashboardModelFromJson(json);
-  
+
   Dashboard toEntity() => Dashboard(
     id: id,
     userId: userId,
@@ -37,21 +37,17 @@ class DashboardModel with _$DashboardModel {
 @freezed
 class WidgetModel with _$WidgetModel {
   const WidgetModel._();
-  
+
   const factory WidgetModel({
     required String id,
     required String type,
     required Map<String, dynamic> config,
     required Map<String, dynamic> position,
   }) = _WidgetModel;
-  
+
   factory WidgetModel.fromJson(Map<String, dynamic> json) =>
       _$WidgetModelFromJson(json);
-  
-  Widget toEntity() => Widget(
-    id: id,
-    type: type,
-    config: config,
-    position: position,
-  );
+
+  Widget toEntity() =>
+      Widget(id: id, type: type, config: config, position: position);
 }

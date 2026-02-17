@@ -12,19 +12,19 @@ import 'package:financial_analytics/services/platform_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   // Initialize platform-specific services
   await _initializePlatform();
-  
+
   // Initialize dependency injection
   await configureDependencies();
-  
+
   // Initialize local storage
   await Hive.initFlutter();
-  
+
   // Initialize Firebase
   await Firebase.initializeApp();
-  
+
   runApp(const FinancialAnalyticsApp());
 }
 
@@ -32,8 +32,8 @@ Future<void> _initializePlatform() async {
   if (kIsWeb) {
     // Web-specific initialization
   } else if (defaultTargetPlatform == TargetPlatform.windows ||
-             defaultTargetPlatform == TargetPlatform.linux ||
-             defaultTargetPlatform == TargetPlatform.macOS) {
+      defaultTargetPlatform == TargetPlatform.linux ||
+      defaultTargetPlatform == TargetPlatform.macOS) {
     // Desktop-specific initialization
   } else {
     // Mobile-specific initialization
@@ -46,10 +46,12 @@ class FinancialAnalyticsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appRouter = getIt<AppRouter>();
-    
+
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => getIt<AuthBloc>()..add(const AuthCheckRequested())),
+        BlocProvider(
+          create: (_) => getIt<AuthBloc>()..add(const AuthCheckRequested()),
+        ),
         BlocProvider(create: (_) => getIt<ConnectivityBloc>()),
       ],
       child: MaterialApp.router(

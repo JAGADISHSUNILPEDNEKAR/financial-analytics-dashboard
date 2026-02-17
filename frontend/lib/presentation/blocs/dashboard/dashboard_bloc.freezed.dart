@@ -12,7 +12,8 @@ part of 'dashboard_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$DashboardState {
@@ -22,16 +23,14 @@ mixin _$DashboardState {
     required TResult Function() loading,
     required TResult Function(Dashboard dashboard) loaded,
     required TResult Function(String message) error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(Dashboard dashboard)? loaded,
     TResult? Function(String message)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -39,24 +38,21 @@ mixin _$DashboardState {
     TResult Function(Dashboard dashboard)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
@@ -64,15 +60,15 @@ mixin _$DashboardState {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DashboardStateCopyWith<$Res> {
   factory $DashboardStateCopyWith(
-          DashboardState value, $Res Function(DashboardState) then) =
-      _$DashboardStateCopyWithImpl<$Res, DashboardState>;
+    DashboardState value,
+    $Res Function(DashboardState) then,
+  ) = _$DashboardStateCopyWithImpl<$Res, DashboardState>;
 }
 
 /// @nodoc
@@ -89,8 +85,9 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
 /// @nodoc
 abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+    _$InitialImpl value,
+    $Res Function(_$InitialImpl) then,
+  ) = __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -98,8 +95,9 @@ class __$$InitialImplCopyWithImpl<$Res>
     extends _$DashboardStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
+    _$InitialImpl _value,
+    $Res Function(_$InitialImpl) _then,
+  ) : super(_value, _then);
 }
 
 /// @nodoc
@@ -203,8 +201,9 @@ abstract class _Initial implements DashboardState {
 /// @nodoc
 abstract class _$$LoadingImplCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
+    _$LoadingImpl value,
+    $Res Function(_$LoadingImpl) then,
+  ) = __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -212,8 +211,9 @@ class __$$LoadingImplCopyWithImpl<$Res>
     extends _$DashboardStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
-      : super(_value, _then);
+    _$LoadingImpl _value,
+    $Res Function(_$LoadingImpl) _then,
+  ) : super(_value, _then);
 }
 
 /// @nodoc
@@ -317,8 +317,9 @@ abstract class _Loading implements DashboardState {
 /// @nodoc
 abstract class _$$LoadedImplCopyWith<$Res> {
   factory _$$LoadedImplCopyWith(
-          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
-      __$$LoadedImplCopyWithImpl<$Res>;
+    _$LoadedImpl value,
+    $Res Function(_$LoadedImpl) then,
+  ) = __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Dashboard dashboard});
 }
@@ -328,20 +329,21 @@ class __$$LoadedImplCopyWithImpl<$Res>
     extends _$DashboardStateCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
-      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
-      : super(_value, _then);
+    _$LoadedImpl _value,
+    $Res Function(_$LoadedImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? dashboard = null,
-  }) {
-    return _then(_$LoadedImpl(
-      null == dashboard
-          ? _value.dashboard
-          : dashboard // ignore: cast_nullable_to_non_nullable
-              as Dashboard,
-    ));
+  $Res call({Object? dashboard = null}) {
+    return _then(
+      _$LoadedImpl(
+        null == dashboard
+            ? _value.dashboard
+            : dashboard // ignore: cast_nullable_to_non_nullable
+                  as Dashboard,
+      ),
+    );
   }
 }
 
@@ -463,8 +465,9 @@ abstract class _Loaded implements DashboardState {
 /// @nodoc
 abstract class _$$ErrorImplCopyWith<$Res> {
   factory _$$ErrorImplCopyWith(
-          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
-      __$$ErrorImplCopyWithImpl<$Res>;
+    _$ErrorImpl value,
+    $Res Function(_$ErrorImpl) then,
+  ) = __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
@@ -474,20 +477,21 @@ class __$$ErrorImplCopyWithImpl<$Res>
     extends _$DashboardStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
-      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
-      : super(_value, _then);
+    _$ErrorImpl _value,
+    $Res Function(_$ErrorImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$ErrorImpl(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? message = null}) {
+    return _then(
+      _$ErrorImpl(
+        null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -611,47 +615,42 @@ mixin _$DashboardEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() loadRequested,
     required TResult Function(String widgetId) widgetRemoved,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadRequested,
     TResult? Function(String widgetId)? widgetRemoved,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadRequested,
     TResult Function(String widgetId)? widgetRemoved,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(DashboardLoadRequested value) loadRequested,
     required TResult Function(DashboardWidgetRemoved value) widgetRemoved,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(DashboardLoadRequested value)? loadRequested,
     TResult? Function(DashboardWidgetRemoved value)? widgetRemoved,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(DashboardLoadRequested value)? loadRequested,
     TResult Function(DashboardWidgetRemoved value)? widgetRemoved,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DashboardEventCopyWith<$Res> {
   factory $DashboardEventCopyWith(
-          DashboardEvent value, $Res Function(DashboardEvent) then) =
-      _$DashboardEventCopyWithImpl<$Res, DashboardEvent>;
+    DashboardEvent value,
+    $Res Function(DashboardEvent) then,
+  ) = _$DashboardEventCopyWithImpl<$Res, DashboardEvent>;
 }
 
 /// @nodoc
@@ -668,9 +667,9 @@ class _$DashboardEventCopyWithImpl<$Res, $Val extends DashboardEvent>
 /// @nodoc
 abstract class _$$DashboardLoadRequestedImplCopyWith<$Res> {
   factory _$$DashboardLoadRequestedImplCopyWith(
-          _$DashboardLoadRequestedImpl value,
-          $Res Function(_$DashboardLoadRequestedImpl) then) =
-      __$$DashboardLoadRequestedImplCopyWithImpl<$Res>;
+    _$DashboardLoadRequestedImpl value,
+    $Res Function(_$DashboardLoadRequestedImpl) then,
+  ) = __$$DashboardLoadRequestedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -678,9 +677,9 @@ class __$$DashboardLoadRequestedImplCopyWithImpl<$Res>
     extends _$DashboardEventCopyWithImpl<$Res, _$DashboardLoadRequestedImpl>
     implements _$$DashboardLoadRequestedImplCopyWith<$Res> {
   __$$DashboardLoadRequestedImplCopyWithImpl(
-      _$DashboardLoadRequestedImpl _value,
-      $Res Function(_$DashboardLoadRequestedImpl) _then)
-      : super(_value, _then);
+    _$DashboardLoadRequestedImpl _value,
+    $Res Function(_$DashboardLoadRequestedImpl) _then,
+  ) : super(_value, _then);
 }
 
 /// @nodoc
@@ -773,9 +772,9 @@ abstract class DashboardLoadRequested implements DashboardEvent {
 /// @nodoc
 abstract class _$$DashboardWidgetRemovedImplCopyWith<$Res> {
   factory _$$DashboardWidgetRemovedImplCopyWith(
-          _$DashboardWidgetRemovedImpl value,
-          $Res Function(_$DashboardWidgetRemovedImpl) then) =
-      __$$DashboardWidgetRemovedImplCopyWithImpl<$Res>;
+    _$DashboardWidgetRemovedImpl value,
+    $Res Function(_$DashboardWidgetRemovedImpl) then,
+  ) = __$$DashboardWidgetRemovedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String widgetId});
 }
@@ -785,21 +784,21 @@ class __$$DashboardWidgetRemovedImplCopyWithImpl<$Res>
     extends _$DashboardEventCopyWithImpl<$Res, _$DashboardWidgetRemovedImpl>
     implements _$$DashboardWidgetRemovedImplCopyWith<$Res> {
   __$$DashboardWidgetRemovedImplCopyWithImpl(
-      _$DashboardWidgetRemovedImpl _value,
-      $Res Function(_$DashboardWidgetRemovedImpl) _then)
-      : super(_value, _then);
+    _$DashboardWidgetRemovedImpl _value,
+    $Res Function(_$DashboardWidgetRemovedImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? widgetId = null,
-  }) {
-    return _then(_$DashboardWidgetRemovedImpl(
-      widgetId: null == widgetId
-          ? _value.widgetId
-          : widgetId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? widgetId = null}) {
+    return _then(
+      _$DashboardWidgetRemovedImpl(
+        widgetId: null == widgetId
+            ? _value.widgetId
+            : widgetId // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -832,8 +831,11 @@ class _$DashboardWidgetRemovedImpl implements DashboardWidgetRemoved {
   @override
   @pragma('vm:prefer-inline')
   _$$DashboardWidgetRemovedImplCopyWith<_$DashboardWidgetRemovedImpl>
-      get copyWith => __$$DashboardWidgetRemovedImplCopyWithImpl<
-          _$DashboardWidgetRemovedImpl>(this, _$identity);
+  get copyWith =>
+      __$$DashboardWidgetRemovedImplCopyWithImpl<_$DashboardWidgetRemovedImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -905,5 +907,5 @@ abstract class DashboardWidgetRemoved implements DashboardEvent {
   String get widgetId;
   @JsonKey(ignore: true)
   _$$DashboardWidgetRemovedImplCopyWith<_$DashboardWidgetRemovedImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

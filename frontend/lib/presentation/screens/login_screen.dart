@@ -36,7 +36,9 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 24),
               ElevatedButton(
                 onPressed: () {
-                  context.read<AuthBloc>().add(const AuthEvent.checkRequested());
+                  context.read<AuthBloc>().add(
+                    const AuthEvent.checkRequested(),
+                  );
                 },
                 child: const Text('Login'),
               ),

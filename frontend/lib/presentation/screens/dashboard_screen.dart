@@ -43,13 +43,13 @@ class DashboardScreen extends StatelessWidget {
       ),
     );
   }
-  
+
   Widget _buildDashboard(BuildContext context, Dashboard dashboard) {
     return LayoutBuilder(
       builder: (context, constraints) {
         final isDesktop = constraints.maxWidth > 1200;
         final isTablet = constraints.maxWidth > 600;
-        
+
         return GridView.builder(
           padding: const EdgeInsets.all(16),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -72,21 +72,21 @@ class DashboardScreen extends StatelessWidget {
       },
     );
   }
-  
+
   void _showAddWidgetDialog(BuildContext context) {
     // Implementation for adding widgets
   }
-  
+
   void _navigateToSettings(BuildContext context) {
     // Navigate to settings
   }
-  
+
   void _removeWidget(BuildContext context, String widgetId) {
     context.read<DashboardBloc>().add(
       DashboardWidgetRemoved(widgetId: widgetId),
     );
   }
-  
+
   void _configureWidget(BuildContext context, Widget widget) {
     // Configure widget dialog
   }

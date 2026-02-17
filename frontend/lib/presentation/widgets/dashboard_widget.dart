@@ -23,8 +23,14 @@ class DashboardWidget extends StatelessWidget {
               const Text('Widget Title'),
               Row(
                 children: [
-                   IconButton(icon: const Icon(Icons.settings), onPressed: onConfigure),
-                   IconButton(icon: const Icon(Icons.close), onPressed: onRemove),
+                  IconButton(
+                    icon: const Icon(Icons.settings),
+                    onPressed: onConfigure,
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.close),
+                    onPressed: onRemove,
+                  ),
                 ],
               ),
             ],

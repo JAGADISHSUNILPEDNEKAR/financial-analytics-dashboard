@@ -21,17 +21,17 @@ _$DashboardModelImpl _$$DashboardModelImplFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$$DashboardModelImplToJson(
-        _$DashboardModelImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'userId': instance.userId,
-      'name': instance.name,
-      'layout': instance.layout,
-      'widgets': instance.widgets,
-      'isPublic': instance.isPublic,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'updatedAt': instance.updatedAt.toIso8601String(),
-    };
+  _$DashboardModelImpl instance,
+) => <String, dynamic>{
+  'id': instance.id,
+  'userId': instance.userId,
+  'name': instance.name,
+  'layout': instance.layout,
+  'widgets': instance.widgets,
+  'isPublic': instance.isPublic,
+  'createdAt': instance.createdAt.toIso8601String(),
+  'updatedAt': instance.updatedAt.toIso8601String(),
+};
 
 _$WidgetModelImpl _$$WidgetModelImplFromJson(Map<String, dynamic> json) =>
     _$WidgetModelImpl(

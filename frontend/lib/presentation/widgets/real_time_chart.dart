@@ -6,13 +6,13 @@ import 'dart:async';
 class RealTimeChart extends StatefulWidget {
   final String symbol;
   final ChartType chartType;
-  
+
   const RealTimeChart({
     Key? key,
     required this.symbol,
     this.chartType = ChartType.line,
   }) : super(key: key);
-  
+
   @override
   State<RealTimeChart> createState() => _RealTimeChartState();
 }
@@ -24,19 +24,20 @@ class _RealTimeChartState extends State<RealTimeChart> {
   final _maxDataPoints = 100;
   double _minY = double.infinity;
   double _maxY = double.negativeInfinity;
-  
+
   @override
   void initState() {
     super.initState();
     _subscribeToUpdates();
   }
-  
+
   void _subscribeToUpdates() {
     final wsService = WebSocketService();
     wsService.subscribe([widget.symbol]);
-    
+
     _subscription = wsService.messages.listen((message) {
-      if (message['type'] == 'price_update' && message['symbol'] == widget.symbol) {
+      if (message['type'] == 'price_update' &&
+          message['symbol'] == widget.symbol) {
         setState(() {
           _addDataPoint(
             message['price'].toDouble(),
@@ -47,10 +48,10 @@ class _RealTimeChartState extends State<RealTimeChart> {
       }
     });
   }
-  
+
   void _addDataPoint(double price, double volume, DateTime timestamp) {
     final x = _priceData.length.toDouble();
-    
+
     _priceData.add(FlSpot(x, price));
     _volumeData.add(
       BarChartGroupData(
@@ -58,7 +59,11 @@ class _RealTimeChartState extends State<RealTimeChart> {
         barRods: [
           BarChartRodData(
             toY: volume,
-            color: price > (_priceData.length > 1 ? _priceData[_priceData.length - 2].y : price)
+            color:
+                price >
+                    (_priceData.length > 1
+                        ? _priceData[_priceData.length - 2].y
+                        : price)
                 ? Colors.green
                 : Colors.red,
             width: 2,
@@ -66,16 +71,16 @@ class _RealTimeChartState extends State<RealTimeChart> {
         ],
       ),
     );
-    
+
     // Update min/max for scaling
     _minY = _priceData.map((e) => e.y).reduce((a, b) => a < b ? a : b);
     _maxY = _priceData.map((e) => e.y).reduce((a, b) => a > b ? a : b);
-    
+
     // Keep only recent data points
     if (_priceData.length > _maxDataPoints) {
       _priceData.removeAt(0);
       _volumeData.removeAt(0);
-      
+
       // Adjust x values
       for (int i = 0; i < _priceData.length; i++) {
         _priceData[i] = FlSpot(i.toDouble(), _priceData[i].y);
@@ -85,7 +90,7 @@ class _RealTimeChartState extends State<RealTimeChart> {
       }
     }
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -111,20 +116,18 @@ class _RealTimeChartState extends State<RealTimeChart> {
               ],
             ),
             const SizedBox(height: 16),
-            Expanded(
-              child: _buildChart(),
-            ),
+            Expanded(child: _buildChart()),
           ],
         ),
       ),
     );
   }
-  
+
   Widget _buildChart() {
     if (_priceData.isEmpty) {
       return const Center(child: CircularProgressIndicator());
     }
-    
+
     switch (widget.chartType) {
       case ChartType.line:
         return _buildLineChart();
@@ -134,7 +137,7 @@ class _RealTimeChartState extends State<RealTimeChart> {
         return _buildCombinedChart();
     }
   }
-  
+
   Widget _buildLineChart() {
     return LineChart(
       LineChartData(
@@ -143,9 +146,7 @@ class _RealTimeChartState extends State<RealTimeChart> {
           leftTitles: AxisTitles(
             sideTitles: SideTitles(showTitles: true, reservedSize: 40),
           ),
-          bottomTitles: AxisTitles(
-            sideTitles: SideTitles(showTitles: false),
-          ),
+          bottomTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
           rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
           topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
         ),
@@ -169,24 +170,24 @@ class _RealTimeChartState extends State<RealTimeChart> {
       ),
     );
   }
-  
+
   Widget _buildCandlestickChart() {
     // Implement candlestick chart
     return Container();
   }
-  
+
   Widget _buildCombinedChart() {
     // Implement combined price and volume chart
     return Container();
   }
-  
+
   Color _getPriceColor() {
     if (_priceData.length < 2) return Colors.grey;
     final lastPrice = _priceData.last.y;
     final previousPrice = _priceData[_priceData.length - 2].y;
     return lastPrice > previousPrice ? Colors.green : Colors.red;
   }
-  
+
   @override
   void dispose() {
     _subscription?.cancel();

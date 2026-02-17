@@ -16,17 +16,21 @@ import 'package:financial_analytics/presentation/widgets/real_time_chart.dart';
 
 // Mocks
 class MockAuthService extends Mock implements AuthService {}
+
 class MockRouterDelegate extends Mock implements RouterDelegate<UrlState> {}
-class MockRouteInformationParser extends Mock implements RouteInformationParser<UrlState> {}
+
+class MockRouteInformationParser extends Mock
+    implements RouteInformationParser<UrlState> {}
 
 class MockAppRouter extends Mock implements AppRouter {
   // Mock config() since FinancialAnalyticsApp uses it
   @override
-    RouterConfig<UrlState> config({
+  RouterConfig<UrlState> config({
     DeepLinkBuilder? deepLinkBuilder,
     String? navRestorationScopeId,
     WidgetBuilder? placeholder,
-    NavigatorObserversBuilder navigatorObservers = AutoRouterDelegate.defaultNavigatorObserversBuilder,
+    NavigatorObserversBuilder navigatorObservers =
+        AutoRouterDelegate.defaultNavigatorObserversBuilder,
     bool includePrefixMatches = !kIsWeb,
     bool Function(String? location)? neglectWhen,
     bool rebuildStackOnDeepLink = false,
@@ -35,13 +39,13 @@ class MockAppRouter extends Mock implements AppRouter {
     List<PageRouteInfo>? initialRoutes,
   }) {
     return RouterConfig(
-      routerDelegate: MockRouterDelegate(), 
+      routerDelegate: MockRouterDelegate(),
       routeInformationParser: MockRouteInformationParser(),
     );
   }
 }
 
-// Since we cannot mock Generated Code easily without running build_runner, 
+// Since we cannot mock Generated Code easily without running build_runner,
 // we will test the Screens directly in isolation mostly, OR use a simplified approach
 // for FinancialAnalyticsApp if we can mock the router properly.
 // However, creating a functional MockRouterDelegate is hard.
@@ -71,7 +75,7 @@ void main() {
 
     final getIt = GetIt.instance;
     getIt.reset();
-    
+
     // Register dependencies
     getIt.registerSingleton<AuthBloc>(mockAuthBloc);
     getIt.registerSingleton<ConnectivityBloc>(mockConnectivityBloc);
@@ -80,18 +84,18 @@ void main() {
 
   group('App Widget Tests', () {
     testWidgets('LoginScreen shows login fields', (WidgetTester tester) async {
-       // Provide AuthBloc
-       await tester.pumpWidget(
-         MaterialApp(
-           home: BlocProvider<AuthBloc>(
-             create: (_) => mockAuthBloc,
-             child: const LoginScreen(),
-           ),
-         ),
-       );
+      // Provide AuthBloc
+      await tester.pumpWidget(
+        MaterialApp(
+          home: BlocProvider<AuthBloc>(
+            create: (_) => mockAuthBloc,
+            child: const LoginScreen(),
+          ),
+        ),
+      );
 
-       expect(find.text('Login'), findsWidgets); // Title and Button
-       expect(find.byType(TextFormField), findsNWidgets(2));
+      expect(find.text('Login'), findsWidgets); // Title and Button
+      expect(find.byType(TextFormField), findsNWidgets(2));
     });
 
     // ... Other tests
