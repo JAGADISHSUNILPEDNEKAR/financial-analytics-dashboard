@@ -162,7 +162,7 @@ class _RealTimeChartState extends State<RealTimeChart> {
             dotData: FlDotData(show: false),
             belowBarData: BarAreaData(
               show: true,
-              color: Theme.of(context).primaryColor.withValues(alpha: 0.1),
+              color: Theme.of(context).primaryColor.withOpacity(0.1),
             ),
           ),
         ],
