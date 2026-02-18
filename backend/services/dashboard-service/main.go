@@ -130,7 +130,9 @@ func (s *DashboardService) listDashboards(w http.ResponseWriter, r *http.Request
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(dashboards)
+	if err := json.NewEncoder(w).Encode(dashboards); err != nil {
+		log.Println("Failed to write response:", err)
+	}
 }
 
 func (s *DashboardService) createDashboard(w http.ResponseWriter, r *http.Request) {
@@ -178,7 +180,9 @@ func (s *DashboardService) createDashboard(w http.ResponseWriter, r *http.Reques
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
-	json.NewEncoder(w).Encode(dashboard)
+	if err := json.NewEncoder(w).Encode(dashboard); err != nil {
+		log.Println("Failed to write response:", err)
+	}
 }
 
 func (s *DashboardService) getDashboard(w http.ResponseWriter, r *http.Request) {
@@ -192,7 +196,9 @@ func (s *DashboardService) getDashboard(w http.ResponseWriter, r *http.Request) 
 	cached, err := s.redis.Get(ctx, cacheKey).Result()
 	if err == nil {
 		w.Header().Set("Content-Type", "application/json")
-		w.Write([]byte(cached))
+		if _, err := w.Write([]byte(cached)); err != nil {
+			log.Println("Failed to write cached response:", err)
+		}
 		return
 	}
 
@@ -233,7 +239,9 @@ func (s *DashboardService) getDashboard(w http.ResponseWriter, r *http.Request) 
 	s.redis.Set(ctx, cacheKey, responseData, 300*time.Second)
 
 	w.Header().Set("Content-Type", "application/json")
-	w.Write(responseData)
+	if _, err := w.Write(responseData); err != nil {
+		log.Println("Failed to write response:", err)
+	}
 }
 
 func (s *DashboardService) updateDashboard(w http.ResponseWriter, r *http.Request) {
@@ -282,7 +290,9 @@ func (s *DashboardService) updateDashboard(w http.ResponseWriter, r *http.Reques
 	})
 
 	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(map[string]string{"message": "Dashboard updated successfully"})
+	if err := json.NewEncoder(w).Encode(map[string]string{"message": "Dashboard updated successfully"}); err != nil {
+		log.Println("Failed to write response:", err)
+	}
 }
 
 func (s *DashboardService) deleteDashboard(w http.ResponseWriter, r *http.Request) {
@@ -315,7 +325,9 @@ func (s *DashboardService) deleteDashboard(w http.ResponseWriter, r *http.Reques
 	})
 
 	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(map[string]string{"message": "Dashboard deleted successfully"})
+	if err := json.NewEncoder(w).Encode(map[string]string{"message": "Dashboard deleted successfully"}); err != nil {
+		log.Println("Failed to write response:", err)
+	}
 }
 
 func (s *DashboardService) addWidget(w http.ResponseWriter, r *http.Request) {
@@ -364,7 +376,9 @@ func (s *DashboardService) addWidget(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
-	json.NewEncoder(w).Encode(widget)
+	if err := json.NewEncoder(w).Encode(widget); err != nil {
+		log.Println("Failed to write response:", err)
+	}
 }
 
 func (s *DashboardService) updateWidget(w http.ResponseWriter, r *http.Request) {
@@ -403,7 +417,9 @@ func (s *DashboardService) updateWidget(w http.ResponseWriter, r *http.Request) 
 	s.redis.Del(ctx, "dashboard:"+dashboardID)
 
 	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(map[string]string{"message": "Widget updated successfully"})
+	if err := json.NewEncoder(w).Encode(map[string]string{"message": "Widget updated successfully"}); err != nil {
+		log.Println("Failed to write response:", err)
+	}
 }
 
 func (s *DashboardService) deleteWidget(w http.ResponseWriter, r *http.Request) {
@@ -435,7 +451,9 @@ func (s *DashboardService) deleteWidget(w http.ResponseWriter, r *http.Request) 
 	s.redis.Del(ctx, "dashboard:"+dashboardID)
 
 	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(map[string]string{"message": "Widget deleted successfully"})
+	if err := json.NewEncoder(w).Encode(map[string]string{"message": "Widget deleted successfully"}); err != nil {
+		log.Println("Failed to write response:", err)
+	}
 }
 
 func (s *DashboardService) shareDashboard(w http.ResponseWriter, r *http.Request) {
@@ -483,7 +501,9 @@ func (s *DashboardService) shareDashboard(w http.ResponseWriter, r *http.Request
 	})
 
 	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(map[string]string{"message": "Dashboard shared successfully"})
+	if err := json.NewEncoder(w).Encode(map[string]string{"message": "Dashboard shared successfully"}); err != nil {
+		log.Println("Failed to write response:", err)
+	}
 }
 
 func (s *DashboardService) loadWidgets(dashboard *Dashboard) {
@@ -568,7 +588,9 @@ func (s *DashboardService) getPermissions(w http.ResponseWriter, r *http.Request
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(permissions)
+	if err := json.NewEncoder(w).Encode(permissions); err != nil {
+		log.Println("Failed to write response:", err)
+	}
 }
 
 func (s *DashboardService) updatePermissions(_ http.ResponseWriter, _ *http.Request) {
@@ -610,10 +632,14 @@ func (s *DashboardService) listPublicDashboards(w http.ResponseWriter, r *http.R
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(dashboards)
+	if err := json.NewEncoder(w).Encode(dashboards); err != nil {
+		log.Println("Failed to write response:", err)
+	}
 }
 
 func handleHealth(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(map[string]string{"status": "healthy"})
+	if err := json.NewEncoder(w).Encode(map[string]string{"status": "healthy"}); err != nil {
+		log.Println("Failed to write response:", err)
+	}
 }

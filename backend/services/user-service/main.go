@@ -80,7 +80,9 @@ func (s *UserService) getUser(w http.ResponseWriter, r *http.Request) {
 	cached, err := s.redis.Get(ctx, cacheKey).Result()
 	if err == nil {
 		w.Header().Set("Content-Type", "application/json")
-		w.Write([]byte(cached))
+		if _, err := w.Write([]byte(cached)); err != nil {
+			log.Println("Failed to write cached response:", err)
+		}
 		return
 	}
 
@@ -115,7 +117,9 @@ func (s *UserService) getUser(w http.ResponseWriter, r *http.Request) {
 
 	// Parse preferences
 	if prefsJSON != nil {
-		json.Unmarshal(prefsJSON, &profile.Preferences)
+		if err := json.Unmarshal(prefsJSON, &profile.Preferences); err != nil {
+			log.Println("Failed to unmarshal preferences:", err)
+		}
 	}
 
 	// Cache the result
@@ -123,7 +127,9 @@ func (s *UserService) getUser(w http.ResponseWriter, r *http.Request) {
 	s.redis.Set(ctx, cacheKey, responseData, 300*time.Second)
 
 	w.Header().Set("Content-Type", "application/json")
-	w.Write(responseData)
+	if _, err := w.Write(responseData); err != nil {
+		log.Println("Failed to write response:", err)
+	}
 }
 
 func (s *UserService) updateUser(w http.ResponseWriter, r *http.Request) {
@@ -157,7 +163,9 @@ func (s *UserService) updateUser(w http.ResponseWriter, r *http.Request) {
 	s.redis.Del(ctx, "user:"+userID)
 
 	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(map[string]string{"message": "User updated successfully"})
+	if err := json.NewEncoder(w).Encode(map[string]string{"message": "User updated successfully"}); err != nil {
+		log.Println("Failed to write response:", err)
+	}
 }
 
 func (s *UserService) getPreferences(w http.ResponseWriter, r *http.Request) {
@@ -204,7 +212,9 @@ func (s *UserService) getPreferences(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(prefs)
+	if err := json.NewEncoder(w).Encode(prefs); err != nil {
+		log.Println("Failed to write response:", err)
+	}
 }
 
 func (s *UserService) updatePreferences(w http.ResponseWriter, r *http.Request) {
@@ -242,7 +252,9 @@ func (s *UserService) updatePreferences(w http.ResponseWriter, r *http.Request) 
 	s.redis.Del(ctx, "user:"+userID)
 
 	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(map[string]string{"message": "Preferences updated successfully"})
+	if err := json.NewEncoder(w).Encode(map[string]string{"message": "Preferences updated successfully"}); err != nil {
+		log.Println("Failed to write response:", err)
+	}
 }
 
 func (s *UserService) deleteUser(w http.ResponseWriter, r *http.Request) {
@@ -266,7 +278,9 @@ func (s *UserService) deleteUser(w http.ResponseWriter, r *http.Request) {
 	s.redis.Del(ctx, "user:"+userID)
 
 	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(map[string]string{"message": "User deleted successfully"})
+	if err := json.NewEncoder(w).Encode(map[string]string{"message": "User deleted successfully"}); err != nil {
+		log.Println("Failed to write response:", err)
+	}
 }
 
 func (s *UserService) uploadAvatar(w http.ResponseWriter, r *http.Request) {
@@ -307,10 +321,12 @@ func (s *UserService) uploadAvatar(w http.ResponseWriter, r *http.Request) {
 	s.redis.Del(ctx, "user:"+userID)
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(map[string]string{
+	if err := json.NewEncoder(w).Encode(map[string]string{
 		"avatar_url": avatarURL,
 		"message":    "Avatar uploaded successfully",
-	})
+	}); err != nil {
+		log.Println("Failed to write response:", err)
+	}
 }
 
 func (s *UserService) getSettings(_ http.ResponseWriter, _ *http.Request) {
@@ -323,5 +339,7 @@ func (s *UserService) updateSettings(_ http.ResponseWriter, _ *http.Request) {
 
 func handleHealth(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(map[string]string{"status": "healthy"})
+	if err := json.NewEncoder(w).Encode(map[string]string{"status": "healthy"}); err != nil {
+		log.Println("Failed to write response:", err)
+	}
 }
