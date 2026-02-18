@@ -45,7 +45,15 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        service: [api-gateway, auth-service, user-service, dashboard-service]
+        include:
+          - service: api-gateway
+            path: ./backend/api-gateway
+          - service: auth-service
+            path: ./backend/services/auth-service
+          - service: user-service
+            path: ./backend/services/user-service
+          - service: dashboard-service
+            path: ./backend/services/dashboard-service
     steps:
     - uses: actions/checkout@v3
     
@@ -63,7 +71,7 @@ jobs:
           ${{ runner.os }}-go-
     
     - name: Run tests
-      working-directory: ./backend/services/${{ matrix.service }}
+      working-directory: ${{ matrix.path }}
       run: |
         go test -v ./...
         go vet ./...
@@ -72,7 +80,7 @@ jobs:
       uses: golangci/golangci-lint-action@v3
       with:
         version: latest
-        working-directory: ./backend/services/${{ matrix.service }}
+        working-directory: ${{ matrix.path }}
 
   # Rust Tests
   rust-test:
