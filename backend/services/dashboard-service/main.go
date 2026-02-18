@@ -259,7 +259,14 @@ func (s *DashboardService) updateDashboard(w http.ResponseWriter, r *http.Reques
 
 	// Check ownership
 	var ownerID string
-	s.db.QueryRow("SELECT user_id FROM dashboards WHERE id = $1", dashboardID).Scan(&ownerID)
+	if err := s.db.QueryRow("SELECT user_id FROM dashboards WHERE id = $1", dashboardID).Scan(&ownerID); err != nil {
+		if err == sql.ErrNoRows {
+			http.Error(w, "Dashboard not found", http.StatusNotFound)
+		} else {
+			http.Error(w, "Database error", http.StatusInternalServerError)
+		}
+		return
+	}
 	if ownerID != userID {
 		http.Error(w, "Access denied", http.StatusForbidden)
 		return
@@ -310,7 +317,14 @@ func (s *DashboardService) deleteDashboard(w http.ResponseWriter, r *http.Reques
 
 	// Check ownership
 	var ownerID string
-	s.db.QueryRow("SELECT user_id FROM dashboards WHERE id = $1", dashboardID).Scan(&ownerID)
+	if err := s.db.QueryRow("SELECT user_id FROM dashboards WHERE id = $1", dashboardID).Scan(&ownerID); err != nil {
+		if err == sql.ErrNoRows {
+			http.Error(w, "Dashboard not found", http.StatusNotFound)
+		} else {
+			http.Error(w, "Database error", http.StatusInternalServerError)
+		}
+		return
+	}
 	if ownerID != userID {
 		http.Error(w, "Access denied", http.StatusForbidden)
 		return
@@ -345,7 +359,14 @@ func (s *DashboardService) addWidget(w http.ResponseWriter, r *http.Request) {
 
 	// Check ownership
 	var ownerID string
-	s.db.QueryRow("SELECT user_id FROM dashboards WHERE id = $1", dashboardID).Scan(&ownerID)
+	if err := s.db.QueryRow("SELECT user_id FROM dashboards WHERE id = $1", dashboardID).Scan(&ownerID); err != nil {
+		if err == sql.ErrNoRows {
+			http.Error(w, "Dashboard not found", http.StatusNotFound)
+		} else {
+			http.Error(w, "Database error", http.StatusInternalServerError)
+		}
+		return
+	}
 	if ownerID != userID {
 		http.Error(w, "Access denied", http.StatusForbidden)
 		return
@@ -397,7 +418,14 @@ func (s *DashboardService) updateWidget(w http.ResponseWriter, r *http.Request) 
 
 	// Check ownership
 	var ownerID string
-	s.db.QueryRow("SELECT user_id FROM dashboards WHERE id = $1", dashboardID).Scan(&ownerID)
+	if err := s.db.QueryRow("SELECT user_id FROM dashboards WHERE id = $1", dashboardID).Scan(&ownerID); err != nil {
+		if err == sql.ErrNoRows {
+			http.Error(w, "Dashboard not found", http.StatusNotFound)
+		} else {
+			http.Error(w, "Database error", http.StatusInternalServerError)
+		}
+		return
+	}
 	if ownerID != userID {
 		http.Error(w, "Access denied", http.StatusForbidden)
 		return
@@ -438,7 +466,14 @@ func (s *DashboardService) deleteWidget(w http.ResponseWriter, r *http.Request) 
 
 	// Check ownership
 	var ownerID string
-	s.db.QueryRow("SELECT user_id FROM dashboards WHERE id = $1", dashboardID).Scan(&ownerID)
+	if err := s.db.QueryRow("SELECT user_id FROM dashboards WHERE id = $1", dashboardID).Scan(&ownerID); err != nil {
+		if err == sql.ErrNoRows {
+			http.Error(w, "Dashboard not found", http.StatusNotFound)
+		} else {
+			http.Error(w, "Database error", http.StatusInternalServerError)
+		}
+		return
+	}
 	if ownerID != userID {
 		http.Error(w, "Access denied", http.StatusForbidden)
 		return
@@ -471,7 +506,14 @@ func (s *DashboardService) shareDashboard(w http.ResponseWriter, r *http.Request
 
 	// Check ownership
 	var ownerID string
-	s.db.QueryRow("SELECT user_id FROM dashboards WHERE id = $1", dashboardID).Scan(&ownerID)
+	if err := s.db.QueryRow("SELECT user_id FROM dashboards WHERE id = $1", dashboardID).Scan(&ownerID); err != nil {
+		if err == sql.ErrNoRows {
+			http.Error(w, "Dashboard not found", http.StatusNotFound)
+		} else {
+			http.Error(w, "Database error", http.StatusInternalServerError)
+		}
+		return
+	}
 	if ownerID != userID {
 		http.Error(w, "Access denied", http.StatusForbidden)
 		return
@@ -538,12 +580,14 @@ func (s *DashboardService) loadWidgets(dashboard *Dashboard) {
 
 func (s *DashboardService) checkPermission(dashboardID, userID string) bool {
 	var exists bool
-	s.db.QueryRow(`
+	if err := s.db.QueryRow(`
         SELECT EXISTS(
             SELECT 1 FROM dashboard_permissions
             WHERE dashboard_id = $1 AND user_id = $2
         )
-    `, dashboardID, userID).Scan(&exists)
+    `, dashboardID, userID).Scan(&exists); err != nil {
+		return false
+	}
 	return exists
 }
 
