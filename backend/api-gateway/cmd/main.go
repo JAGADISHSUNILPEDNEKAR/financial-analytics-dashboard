@@ -20,7 +20,7 @@ import (
 func main() {
 	// Initialize logger
 	logger, _ := zap.NewProduction()
-	defer logger.Sync()
+	defer func() { _ = logger.Sync() }()
 
 	// Load configuration
 	cfg, err := config.Load()
