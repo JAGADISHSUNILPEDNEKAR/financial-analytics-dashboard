@@ -54,7 +54,10 @@ func main() {
 	defer db.Close()
 
 	// Initialize Redis
-	opt, _ := redis.ParseURL(os.Getenv("REDIS_URL"))
+	opt, err := redis.ParseURL(os.Getenv("REDIS_URL"))
+	if err != nil {
+		log.Fatal("Failed to parse Redis URL:", err)
+	}
 	redisClient := redis.NewClient(opt)
 
 	// Initialize Kafka writer
@@ -235,7 +238,12 @@ func (s *DashboardService) getDashboard(w http.ResponseWriter, r *http.Request) 
 	s.loadWidgets(&dashboard)
 
 	// Cache the result
-	responseData, _ := json.Marshal(dashboard)
+	responseData, err := json.Marshal(dashboard)
+	if err != nil {
+		log.Println("Failed to marshal dashboard:", err)
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		return
+	}
 	s.redis.Set(ctx, cacheKey, responseData, 300*time.Second)
 
 	w.Header().Set("Content-Type", "application/json")
@@ -546,10 +554,14 @@ func (s *DashboardService) publishEvent(eventType string, data map[string]interf
 		"data":      data,
 	}
 
-	message, _ := json.Marshal(event)
+	message, err := json.Marshal(event)
+	if err != nil {
+		log.Printf("Failed to marshal event: %v", err)
+		return
+	}
 
 	ctx := context.Background()
-	err := s.kafka.WriteMessages(ctx, kafka.Message{
+	err = s.kafka.WriteMessages(ctx, kafka.Message{
 		Value: message,
 	})
 

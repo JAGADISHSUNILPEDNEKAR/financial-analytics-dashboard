@@ -36,7 +36,10 @@ func main() {
 	defer db.Close()
 
 	// Initialize Redis
-	opt, _ := redis.ParseURL(os.Getenv("REDIS_URL"))
+	opt, err := redis.ParseURL(os.Getenv("REDIS_URL"))
+	if err != nil {
+		log.Fatal("Failed to parse Redis URL:", err)
+	}
 	redisClient := redis.NewClient(opt)
 
 	service := &UserService{
@@ -123,7 +126,12 @@ func (s *UserService) getUser(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Cache the result
-	responseData, _ := json.Marshal(profile)
+	responseData, err := json.Marshal(profile)
+	if err != nil {
+		log.Println("Failed to marshal profile:", err)
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		return
+	}
 	s.redis.Set(ctx, cacheKey, responseData, 300*time.Second)
 
 	w.Header().Set("Content-Type", "application/json")
