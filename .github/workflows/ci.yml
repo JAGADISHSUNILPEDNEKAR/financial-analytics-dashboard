@@ -9,7 +9,7 @@ on:
 env:
   FLUTTER_VERSION: '3.19.0'
   GO_VERSION: '1.21'
-  RUST_VERSION: '1.72'
+  RUST_VERSION: '1.85'
   NODE_VERSION: '18'
 
 jobs:
