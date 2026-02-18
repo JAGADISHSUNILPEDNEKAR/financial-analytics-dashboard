@@ -571,7 +571,7 @@ func (s *DashboardService) getPermissions(w http.ResponseWriter, r *http.Request
 	json.NewEncoder(w).Encode(permissions)
 }
 
-func (s *DashboardService) updatePermissions(w http.ResponseWriter, r *http.Request) {
+func (s *DashboardService) updatePermissions(_ http.ResponseWriter, _ *http.Request) {
 	// Implementation similar to shareDashboard
 }
 

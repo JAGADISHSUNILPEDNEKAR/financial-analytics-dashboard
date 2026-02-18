@@ -313,11 +313,11 @@ func (s *UserService) uploadAvatar(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-func (s *UserService) getSettings(w http.ResponseWriter, r *http.Request) {
+func (s *UserService) getSettings(_ http.ResponseWriter, _ *http.Request) {
 	// Implementation similar to getPreferences but for app-specific settings
 }
 
-func (s *UserService) updateSettings(w http.ResponseWriter, r *http.Request) {
+func (s *UserService) updateSettings(_ http.ResponseWriter, _ *http.Request) {
 	// Implementation similar to updatePreferences but for app-specific settings
 }
 
