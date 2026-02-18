@@ -149,10 +149,24 @@ jobs:
       with:
         scan-type: 'fs'
         scan-ref: '.'
+        format: 'table'
+        output: 'trivy-results.txt'
+
+    - name: Run Trivy vulnerability scanner (SARIF)
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
         format: 'sarif'
         output: 'trivy-results.sarif'
-    
+
+    - name: Display Trivy results
+      run: cat trivy-results.txt
+
     - name: Upload Trivy scan results
-      uses: github/codeql-action/upload-sarif@v4
+      uses: actions/upload-artifact@v4
       with:
-        sarif_file: 'trivy-results.sarif'
+        name: security-scan-results
+        path: |
+          trivy-results.sarif
+          trivy-results.txt
