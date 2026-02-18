@@ -19,6 +19,7 @@ web-sys = "0.3"
 rayon = "1.7"
 ndarray = "0.15"
 ta = "0.5"
+chrono = "0.4"
 
 [lib]
 crate-type = ["cdylib", "rlib"]

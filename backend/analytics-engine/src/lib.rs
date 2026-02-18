@@ -2,6 +2,15 @@ use std::collections::HashMap;
 use ndarray::Array1;
 use ta::{indicators::*, DataItem};
 use serde_json::Value;
+use serde::Deserialize;
+
+#[derive(Deserialize)]
+pub struct CalculationRequest {
+    pub symbol: String,
+    pub data: Vec<f64>,
+    pub calculation_type: String,
+    pub params: serde_json::Value,
+}
 
 pub struct AnalyticsEngine {
     calculators: HashMap<String, Box<dyn Calculator>>,
@@ -116,7 +125,7 @@ impl Calculator for EMACalculator {
 
 struct RSICalculator;
 impl Calculator for RSICalculator {
-    fn calculate(&self, data: &[f64], period: usize) -> Result<Value, Box<dyn std::error::Error>> {
+    fn calculate(&self, data: &[f64], _period: usize) -> Result<Value, Box<dyn std::error::Error>> {
         // RSI calculation implementation
         Ok(Value::Number(serde_json::Number::from_f64(65.5).unwrap()))
     }
@@ -137,7 +146,7 @@ impl Calculator for MACDCalculator {
 
 struct BollingerCalculator;
 impl Calculator for BollingerCalculator {
-    fn calculate(&self, data: &[f64], period: usize) -> Result<Value, Box<dyn std::error::Error>> {
+    fn calculate(&self, data: &[f64], _period: usize) -> Result<Value, Box<dyn std::error::Error>> {
         // Bollinger Bands calculation
         let result = serde_json::json!({
             "upper": 105.5,

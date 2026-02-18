@@ -10,11 +10,11 @@ use std::sync::Arc;
 use tokio::net::TcpListener;
 use tracing::{error, info};
 
-mod analytics;
+// mod analytics;
 mod indicators;
 mod streaming;
 
-use analytics::AnalyticsEngine;
+use analytics_engine::{AnalyticsEngine, CalculationRequest};
 use streaming::StreamProcessor;
 
 #[derive(Clone)]
@@ -51,10 +51,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .with_state(app_state);
 
     // Start server
-    let listener = TcpListener::bind("0.0.0.0:8081").await?;
-    info!("Analytics engine listening on {}", listener.local_addr()?);
+    let addr = "0.0.0.0:8081".parse()?;
+    info!("Analytics engine listening on {}", addr);
     
-    axum::serve(listener, app).await?;
+    axum::Server::bind(&addr)
+        .serve(app.into_make_service())
+        .await?;
     Ok(())
 }
 
@@ -93,13 +95,7 @@ async fn get_indicators(
     }
 }
 
-#[derive(Deserialize)]
-struct CalculationRequest {
-    symbol: String,
-    data: Vec<f64>,
-    calculation_type: String,
-    params: serde_json::Value,
-}
+// CalculationRequest moved to lib.rs
 
 #[derive(Serialize)]
 struct CalculationResponse {
