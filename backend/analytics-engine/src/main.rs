@@ -30,7 +30,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Initialize components
     let analytics_engine = Arc::new(AnalyticsEngine::new().await?);
     let stream_processor = Arc::new(StreamProcessor::new().await?);
-    
+
     // Start stream processing
     let processor = stream_processor.clone();
     tokio::spawn(async move {
@@ -53,7 +53,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Start server
     let addr = "0.0.0.0:8081".parse()?;
     info!("Analytics engine listening on {}", addr);
-    
+
     axum::Server::bind(&addr)
         .serve(app.into_make_service())
         .await?;
@@ -82,7 +82,11 @@ async fn get_indicators(
     State(state): State<AppState>,
     Json(query): Json<IndicatorQuery>,
 ) -> Result<Json<IndicatorResponse>, StatusCode> {
-    match state.analytics_engine.calculate_indicators(&symbol, &query.indicators, query.period).await {
+    match state
+        .analytics_engine
+        .calculate_indicators(&symbol, &query.indicators, query.period)
+        .await
+    {
         Ok(result) => Ok(Json(IndicatorResponse {
             symbol,
             indicators: result,
@@ -108,7 +112,7 @@ async fn calculate_custom(
     Json(request): Json<CalculationRequest>,
 ) -> Result<Json<CalculationResponse>, StatusCode> {
     let start = std::time::Instant::now();
-    
+
     match state.analytics_engine.calculate_custom(&request).await {
         Ok(result) => Ok(Json(CalculationResponse {
             result,
