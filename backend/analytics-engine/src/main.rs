@@ -7,7 +7,6 @@ use axum::{
 };
 use serde::{Deserialize, Serialize};
 use std::sync::Arc;
-use tokio::net::TcpListener;
 use tracing::{error, info};
 
 // mod analytics;
@@ -20,6 +19,7 @@ use streaming::StreamProcessor;
 #[derive(Clone)]
 struct AppState {
     analytics_engine: Arc<AnalyticsEngine>,
+    #[allow(dead_code)]
     stream_processor: Arc<StreamProcessor>,
 }
 

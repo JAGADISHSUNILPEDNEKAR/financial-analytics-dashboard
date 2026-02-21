@@ -1,6 +1,5 @@
 use std::collections::HashMap;
 use ndarray::Array1;
-use ta::{indicators::*, DataItem};
 use serde_json::Value;
 use serde::Deserialize;
 
@@ -64,13 +63,13 @@ impl AnalyticsEngine {
         }
     }
     
-    async fn fetch_market_data(&self, symbol: &str) -> Result<Vec<f64>, Box<dyn std::error::Error>> {
+    async fn fetch_market_data(&self, _symbol: &str) -> Result<Vec<f64>, Box<dyn std::error::Error>> {
         // Fetch from database or cache
         // This is a placeholder - implement actual data fetching
         Ok(vec![100.0, 101.5, 99.8, 102.3, 103.1, 101.9, 104.2, 103.8])
     }
     
-    fn calculate_correlation(&self, data: &[f64]) -> Result<Value, Box<dyn std::error::Error>> {
+    fn calculate_correlation(&self, _data: &[f64]) -> Result<Value, Box<dyn std::error::Error>> {
         // Implement correlation calculation
         Ok(Value::Number(serde_json::Number::from_f64(0.85).unwrap()))
     }
@@ -81,12 +80,12 @@ impl AnalyticsEngine {
         Ok(Value::Number(serde_json::Number::from_f64(std_dev).unwrap()))
     }
     
-    fn calculate_custom_indicator(&self, data: &[f64], params: &Value) -> Result<Value, Box<dyn std::error::Error>> {
+    fn calculate_custom_indicator(&self, data: &[f64], _params: &Value) -> Result<Value, Box<dyn std::error::Error>> {
         // Implement custom indicator logic based on params
         Ok(Value::Array(data.iter().map(|&v| Value::Number(serde_json::Number::from_f64(v).unwrap())).collect()))
     }
     
-    pub async fn get_historical_data(&self, symbol: &str) -> Result<Value, Box<dyn std::error::Error>> {
+    pub async fn get_historical_data(&self, _symbol: &str) -> Result<Value, Box<dyn std::error::Error>> {
         // Fetch historical data
         Ok(Value::Object(serde_json::Map::new()))
     }
@@ -125,7 +124,7 @@ impl Calculator for EMACalculator {
 
 struct RSICalculator;
 impl Calculator for RSICalculator {
-    fn calculate(&self, data: &[f64], _period: usize) -> Result<Value, Box<dyn std::error::Error>> {
+    fn calculate(&self, _data: &[f64], _period: usize) -> Result<Value, Box<dyn std::error::Error>> {
         // RSI calculation implementation
         Ok(Value::Number(serde_json::Number::from_f64(65.5).unwrap()))
     }
@@ -133,7 +132,7 @@ impl Calculator for RSICalculator {
 
 struct MACDCalculator;
 impl Calculator for MACDCalculator {
-    fn calculate(&self, data: &[f64], _period: usize) -> Result<Value, Box<dyn std::error::Error>> {
+    fn calculate(&self, _data: &[f64], _period: usize) -> Result<Value, Box<dyn std::error::Error>> {
         // MACD calculation implementation
         let result = serde_json::json!({
             "line": 1.25,
@@ -146,7 +145,7 @@ impl Calculator for MACDCalculator {
 
 struct BollingerCalculator;
 impl Calculator for BollingerCalculator {
-    fn calculate(&self, data: &[f64], _period: usize) -> Result<Value, Box<dyn std::error::Error>> {
+    fn calculate(&self, _data: &[f64], _period: usize) -> Result<Value, Box<dyn std::error::Error>> {
         // Bollinger Bands calculation
         let result = serde_json::json!({
             "upper": 105.5,
