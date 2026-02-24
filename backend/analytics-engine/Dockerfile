@@ -21,7 +21,7 @@ RUN cargo build --release
 
 # Build WASM module
 RUN rustup target add wasm32-unknown-unknown
-RUN cargo build --target wasm32-unknown-unknown --release
+RUN cargo build --target wasm32-unknown-unknown --release --lib
 
 # Final stage
 FROM debian:bookworm-slim
