@@ -9,6 +9,7 @@ COPY Cargo.toml Cargo.lock ./
 # Build dependencies (for better caching)
 RUN mkdir src && \
     echo "fn main() {}" > src/main.rs && \
+    touch src/lib.rs && \
     cargo build --release && \
     rm -rf src
 
