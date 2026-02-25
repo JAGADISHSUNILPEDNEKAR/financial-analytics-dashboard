@@ -1,0 +1,107 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  # Go Release
+  go-release:
+    name: Build Go Binaries
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [api-gateway, auth-service, user-service, dashboard-service]
+        os: [linux, darwin, windows]
+        arch: [amd64, arm64]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+      - name: Build
+        working-directory: ${{ matrix.service == 'api-gateway' && './backend/api-gateway' || format('./backend/services/{0}', matrix.service) }}
+        run: |
+          mkdir -p build
+          GOOS=${{ matrix.os }} GOARCH=${{ matrix.arch }} go build -v -o build/${{ matrix.service }}-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.os == 'windows' && '.exe' || '' }}
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.service }}-${{ matrix.os }}-${{ matrix.arch }}
+          path: ${{ matrix.service == 'api-gateway' && './backend/api-gateway' || format('./backend/services/{0}', matrix.service) }}/build/*
+
+  # Rust Release
+  rust-release:
+    name: Build Rust Binary
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          toolchain: '1.88'
+      - name: Build
+        working-directory: ./backend/analytics-engine
+        run: cargo build --release
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: analytics-engine
+          path: ./backend/analytics-engine/target/release/analytics-engine
+
+  # Flutter Release
+  flutter-release:
+    name: Build Flutter Web
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.0'
+      - name: Install dependencies
+        run: flutter pub get
+        working-directory: ./frontend
+      - name: Build Web
+        run: flutter build web --release
+        working-directory: ./frontend
+      - name: Zip Web Build
+        run: |
+          cd frontend/build/web
+          zip -r ../../../flutter-web.zip .
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: flutter-web
+          path: flutter-web.zip
+
+  # Create Release
+  create-release:
+    name: Create GitHub Release
+    needs: [go-release, rust-release, flutter-release]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Display structure of downloaded files
+        run: ls -R artifacts
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            artifacts/**/*.exe
+            artifacts/**/api-gateway-*
+            artifacts/**/auth-service-*
+            artifacts/**/user-service-*
+            artifacts/**/dashboard-service-*
+            artifacts/**/analytics-engine
+            artifacts/**/flutter-web.zip
+          fail_on_unmatched_files: false
+          generate_release_notes: true
