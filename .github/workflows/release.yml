@@ -63,17 +63,21 @@ jobs:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.0'
+          channel: 'stable'
       - name: Install dependencies
         run: flutter pub get
+        working-directory: ./frontend
+      - name: Diagonostic - List web files
+        run: ls -R web
         working-directory: ./frontend
       - name: Build Web
         run: flutter build web --release
         working-directory: ./frontend
       - name: Zip Web Build
         run: |
-          cd frontend/build/web
+          cd build/web
           zip -r ../../../flutter-web.zip .
+        working-directory: ./frontend
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
