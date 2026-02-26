@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 env:
-  FLUTTER_VERSION: 'stable'
+  FLUTTER_VERSION: 'any'
   GO_VERSION: '1.21'
   RUST_VERSION: '1.88'
   NODE_VERSION: '18'
@@ -23,6 +23,7 @@ jobs:
       uses: subosito/flutter-action@v2
       with:
         flutter-version: ${{ env.FLUTTER_VERSION }}
+        channel: 'stable'
     
     - name: Install dependencies
       working-directory: ./frontend
