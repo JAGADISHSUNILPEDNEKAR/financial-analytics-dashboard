@@ -140,8 +140,8 @@ class _RealTimeChartState extends State<RealTimeChart> {
   Widget _buildLineChart() {
     return LineChart(
       LineChartData(
-        gridData: FlGridData(show: true),
-        titlesData: FlTitlesData(
+        gridData: const FlGridData(show: true),
+        titlesData: const FlTitlesData(
           leftTitles: AxisTitles(
             sideTitles: SideTitles(showTitles: true, reservedSize: 40),
           ),
@@ -159,7 +159,7 @@ class _RealTimeChartState extends State<RealTimeChart> {
             color: Theme.of(context).primaryColor,
             barWidth: 2,
             isStrokeCapRound: true,
-            dotData: FlDotData(show: false),
+            dotData: const FlDotData(show: false),
             belowBarData: BarAreaData(
               show: true,
               color: Theme.of(context).primaryColor.withOpacity(0.1),

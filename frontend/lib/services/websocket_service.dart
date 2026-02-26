@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:financial_analytics/core/constants/api_constants.dart';
 import 'package:financial_analytics/services/auth_service.dart';
@@ -53,7 +54,7 @@ class WebSocketService {
       final data = json.decode(message as String);
       _messageController.add(data);
     } catch (e) {
-      print('Error parsing WebSocket message: $e');
+      debugPrint('Error parsing WebSocket message: $e');
     }
   }
 
@@ -68,7 +69,7 @@ class WebSocketService {
   }
 
   void _handleError(error) {
-    print('WebSocket error: $error');
+    debugPrint('WebSocket error: $error');
     _connectionController.add(ConnectionStatus.error);
     disconnect();
   }
