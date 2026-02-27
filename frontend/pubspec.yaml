@@ -1,6 +1,6 @@
 name: financial_analytics
 description: Real-time multiplatform financial analytics platform
-version: 1.0.2+1
+version: 1.0.3+1
 
 environment:
   sdk: '>=3.0.0 <4.0.0'

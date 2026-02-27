@@ -52,8 +52,8 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: analytics-engine
-          path: ./backend/analytics-engine/target/release/analytics-engine
+          name: analytics-service
+          path: ./backend/analytics-engine/target/release/analytics-service
 
   # Flutter Release
   flutter-release:
@@ -102,12 +102,16 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            artifacts/**/*.exe
-            artifacts/**/api-gateway-*
-            artifacts/**/auth-service-*
-            artifacts/**/user-service-*
-            artifacts/**/dashboard-service-*
-            artifacts/**/analytics-engine
+            artifacts/**/*-windows-*.exe
+            artifacts/**/api-gateway-darwin-*
+            artifacts/**/api-gateway-linux-*
+            artifacts/**/auth-service-darwin-*
+            artifacts/**/auth-service-linux-*
+            artifacts/**/user-service-darwin-*
+            artifacts/**/user-service-linux-*
+            artifacts/**/dashboard-service-darwin-*
+            artifacts/**/dashboard-service-linux-*
+            artifacts/**/analytics-service
             artifacts/**/flutter-web.zip
           fail_on_unmatched_files: false
           generate_release_notes: true
