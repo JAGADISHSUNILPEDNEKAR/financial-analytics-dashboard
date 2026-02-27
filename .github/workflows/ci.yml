@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 env:
-  FLUTTER_VERSION: 'any'
+  FLUTTER_VERSION: '3.38.7'
   GO_VERSION: '1.21'
   RUST_VERSION: '1.88'
   NODE_VERSION: '18'
